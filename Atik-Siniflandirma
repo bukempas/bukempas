@@ -1,5 +1,46 @@
 ISO 14001 Çevre Yönetimi kapsamında atıkların, özellikle geri dönüşümlü atıkların, belirli renkteki kutulara atılması gerekmektedir. 
 Genelde manuel olarak atıklar kutulara atılmakta ve atıldıktan sonra da doğru kutuya atıldığına dair bir kontrol bulunmamaktadır. 
 
-Bilgisayar Görüntüsü (Computer Vision) ile Görüntü Sınıflandırma ile Atıklar Sınıflandırılıp belirli renkteki kutulara doğru şekilde atıkların atılması sağlanabilir.
+Bilgisayar Görüntüsü (Computer Vision) ile Görüntü Sınıflandırma ile Atıklar Sınıflandırılıp belirli renkteki kutulara 
+doğru şekilde atıkların atılması sağlanabilir.
+
+## Veri Seti şu şekildedir : 
+   train_generator.class_indices
+   {'cardboard_mavi': 0,
+    'glass_yesil': 1,
+    'metal_gri': 2,
+    'paper_mavi': 3,
+    'plastic_sari': 4,
+    'trash_cop': 5}
+
+   Buna göre; Karton ve Kağıt atıklar "Mavi" kutulara, Cam atıklar "Yeşil" kutulara, Metal atıklar "Gri" kutulara, Plastik atıklar "Sarı" kutulara,
+              Çöp olarak kabul edilen diğer atıklar ise "Çöp" kutularına atılması gerekmektedir.
+              
+   PS: İlgili görüntüler Google araması ile veya Kaggle'daki ilgili Dataset bölümlerinde bulunabilir.
+
+## Transfer Learning (ResNet50V2 kullanarak)
+   tflearning_model = tf.keras.applications.ResNet50V2(weights = 'imagenet', include_top = False, input_shape = (224,224,3))
+   for layer in tflearning_model.layers:
+     layer.trainable = False
+     
+## Compile ve Training Aşaması
+   from tensorflow.keras.optimizers import SGD
+   model.compile(loss='sparse_categorical_crossentropy',
+                 optimizer = 'SGD',
+                 metrics=['accuracy'])
+   
+   
+   EPOCHS=15
+   history = model.fit(
+      train_generator,
+      epochs=EPOCHS,
+      validation_data=validation_generator)
+
+
+## Accuracy & Loss Grafikleri
+
+
+
+
+
 
