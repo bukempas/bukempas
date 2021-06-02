@@ -42,6 +42,6 @@ doğru şekilde atıkların atılması sağlanabilir.
 
 ## Yeni Veriler ile Modelin Test Edilmesi
    loss, accuracy = model.evaluate(test_generator)
-   2/12 [==============================] - 100s 9s/step - loss: 0.4123 - accuracy: 0.8556 
+   12/12 [==============================] - 100s 9s/step - loss: 0.4123 - accuracy: 0.8556556 
 
 
