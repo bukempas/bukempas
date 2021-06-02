@@ -37,8 +37,8 @@ doğru şekilde atıkların atılması sağlanabilir.
       validation_data=validation_generator)
 
 
-## Accuracy & Loss Grafikleri
-
+## Accuracy & Loss Grafikleri (indir.png)
+   
 
 
 
